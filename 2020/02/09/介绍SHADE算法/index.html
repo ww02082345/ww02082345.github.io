@@ -6,15 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>wz18207 Blog</title>
+  <title>介绍SHADE算法 | wz18207 Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="wz18207 Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="#Abstract介绍SHADE算法，2013年由Tanade等人提出。该算法具有其具有易于实现、寻优能力和鲁棒性强等优点。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="介绍SHADE算法">
+<meta property="og:url" content="http://yoursite.com/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="wz18207 Blog">
+<meta property="og:description" content="#Abstract介绍SHADE算法，2013年由Tanade等人提出。该算法具有其具有易于实现、寻优能力和鲁棒性强等优点。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/1.webp">
+<meta property="og:image" content="http://yoursite.com/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/2.webp">
+<meta property="og:image" content="http://yoursite.com/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/3.webp">
+<meta property="og:image" content="http://yoursite.com/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/4.webp">
+<meta property="og:image" content="http://yoursite.com/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/5.webp">
+<meta property="og:image" content="http://yoursite.com/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/6.webp">
+<meta property="og:image" content="http://yoursite.com/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/7.webp">
+<meta property="article:published_time" content="2020-02-08T18:07:04.000Z">
+<meta property="article:modified_time" content="2020-02-08T18:24:14.076Z">
 <meta property="article:author" content="wz18207">
+<meta property="article:tag" content="SHADE">
+<meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/1.webp">
   
     <link rel="alternative" href="/atom.xml" title="wz18207 Blog" type="application/atom+xml">
   
@@ -146,16 +160,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-介绍SHADE算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-介绍SHADE算法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
             <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/">介绍SHADE算法</a>
+    <h1 class="article-title" itemprop="name">
+      介绍SHADE算法
     </h1>
   
 
@@ -167,6 +179,10 @@
     
     
         
+          <span class="archive-article-date">
+              Reading <span id="busuanzi_value_page_pv"></span>
+          </span>
+        
     
     
       </header>
@@ -175,12 +191,60 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>#Abstract<br>介绍SHADE算法，2013年由Tanade等人提出。<br>该算法具有其具有易于实现、寻优能力和鲁棒性强等优点。</p>
-        
+<a id="more"></a>
+
+<p>#引言<br>SHADE对数字优化是一种简单而又高效的方法。<br>论文地址：<a href="https://ieeexplore.ieee.org/document/6557555/" target="_blank" rel="noopener">https://ieeexplore.ieee.org/document/6557555/</a><br>由于DE的搜索效率很大程度上依赖于控制参数的设置，则在JADE，DE等基础上提出一种新的数字提出一种新的自适应技术—使用成功控制参数的历史存储来引导控制参数值的选择。<br>这些算法都属于进化算法。</p>
+<p>DE算法的搜索性依赖于其自身控制参数的设置。<br>New Mutation Strategy，External Archive，Adaptive Control of Range Factor(F) and Crossover Probability(CR)三方面影响。<br>但是DE算法优化的结果过于依赖这些参数的设置。这也是DE算法的缺陷所在。<br>且在DE算法中，Range Factor 和 Crossover Probability都是保持静态的，且在运算时候目标下一代算子直接从上一代中获取参数进行运算，这种做法增大了所得结果与实际结果的误差。</p>
+<p>JADE的提出有效的控制参数自适应机制的DE变体。JADE在DE的基础上增加突变策略current-to-pbest/1和一个用来存储早期生成的个体的外部存档。<br>JADE同时引入了自适应变体，同时每一代的CR和F与高斯分布和柯西分布所产生的平均值相关。</p>
+<p>在SHADE中，与上述JADE和DE不同的是，建立新的历史存储MCR和MF来存储过去表现好的CR和F。<br>并通过直接抽样的方式在参数空间中选取接近这些存储的参数对，从而产生新的参数对。</p>
+<p>#SHADE算法流程</p>
+<p>以下是该算法的流程图：</p>
+<p>SHADE算法主要步骤<br>主要步骤看图就可以，找图示的流程走就行。<br><img src="/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/1.webp" alt></p>
+<p>下面说一下数学层面的关键流程：</p>
+<ol>
+<li>Parameter Selection and Population Initialization</li>
+</ol>
+<p>给定解空间维数D，可行解取值范围，群体数量Pmax，最大迭代数Gmax，在初始设定时候，设置历史参数向量MCR和MF均为0.5的初始值和维数H。初始值G=0，令存档A=0，令索引计数器h=1。</p>
+<ol start="2">
+<li>主要流程：</li>
+</ol>
+<p>Variation：</p>
+<p><img src="/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/2.webp" alt></p>
+<p>Cross：</p>
+<p><img src="/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/3.webp" alt></p>
+<p>Select：</p>
+<p><img src="/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/4.webp" alt></p>
+<p>在上述步骤中，Variation步骤中设置成功交叉概率集合SCR和SF均为空集。</p>
+<p><img src="/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/5.webp" alt></p>
+<p>对于G代的每一个个体，从1，2，…H中随机选取索引值ri，根据下面的式子分别计算下面三个数值CRi，Fi，pi。</p>
+<p>交叉概率CRi，尺度因子Fi和pi<br>其中，randn是高斯分布随机数；randc是柯西分布随机数<br><img src="/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/6.webp" alt></p>
+<p>接下来进入current-to-best/1的Variation策略，值得注意的是，Xr1,G是从第G代个体中随机选取的个体，而Xr2,G是从第G代所有个体和存档集合A中随机选取的个体。<br>然后进入Cross和Select操作。<br>在Select操作中，保留适应度函数值较小的个体以构成下一代种群，以控制种群数量。<br>如果保留数值发生改变，则Xi,G、CRi,G、Fi,G分别添加至集合A，SCR和SF中。<br>若当A的势|A|&gt;Pmax时，随机删除A中若干个体以保证|A|&lt;Pmax。若SCR不为空集时，则将MCR，MF更新为：</p>
+<p><img src="/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/7.webp" alt></p>
+<p>下一步，则令迭代数G增加1，若G&lt;Gmax成立，则令索引计数器h增加1，此使要满足h&gt;H则令h为1，返回至Variation步骤重复进行。若G&gt;=Gmax成立，则终止迭代。<br>由于接触时间不长，这些都是根据自己的理解所写下来的，而且我作为初学者理解尚不深刻，所以可能存在一些不足之处，若有疑问可在评论区进行合理讨论。<br>上述文章和代码仅供学习使用，且我选用的图片资源都是在官网上公开发表的论文里面可以找到的。</p>
+<p>我的代码：<br><a href="https://github.com/ww02082345/ww020823/tree/master/Algorithm/SHADE_CEC2013" target="_blank" rel="noopener">https://github.com/ww02082345/ww020823/tree/master/Algorithm/SHADE_CEC2013</a></p>
+
       
  <!-- 添加版权声明 -->
     
 
-  <div class="declare" hidden="hidden"></div>
+  <div class="declare">
+    <strong>Author：</strong>
+    
+      wz18207
+    
+    <br>
+    <strong>Link：</strong>
+    <a href="http://yoursite.com/2020/02/09/介绍SHADE算法/" title="介绍SHADE算法" target="_blank">http://yoursite.com/2020/02/09/介绍SHADE算法/</a>
+    <br>
+    <strong>CopyRight：</strong>
+    This article use:
+    <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">Creative Commons Attribution Non-Commercial Use Same Share 4.0 International License Agreement</a>
+    license。Please indicate the source!
+    
+      <br>
+      <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a>
+    
+  </div>
 
       <!-- 添加版权声明 -->
       
@@ -221,16 +285,75 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/09/%E6%95%B4%E7%90%86%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">整理一些笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -250,400 +373,14 @@
 
 
 
-
   
-    <article id="post-整理一些笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-            <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/09/%E6%95%B4%E7%90%86%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/">整理一些笔记</a>
-    </h1>
   
 
-        
-        <a href="/2020/02/09/%E6%95%B4%E7%90%86%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-02-08T18:00:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-09</time>
-</a>
-        
-    
-    
-        
-    
-    
-      </header>
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#Abstract<br>将最近学习的算法笔记进行整理。</p>
-        
-      
- <!-- 添加版权声明 -->
-    
-
-  <div class="declare" hidden="hidden"></div>
-
-      <!-- 添加版权声明 -->
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Diary</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Algorithm//" class="article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Algorithm/Diary//" class="article-tag-list-link color1">Diary</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/09/%E6%95%B4%E7%90%86%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Pcl点云库在Linux下和Windows下最低配置要求" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-            <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/09/Pcl%E7%82%B9%E4%BA%91%E5%BA%93%E5%9C%A8Linux%E4%B8%8B%E5%92%8CWindows%E4%B8%8B%E6%9C%80%E4%BD%8E%E9%85%8D%E7%BD%AE%E8%A6%81%E6%B1%82/">Pcl点云库在Linux下和Windows下最低配置要求</a>
-    </h1>
   
 
-        
-        <a href="/2020/02/09/Pcl%E7%82%B9%E4%BA%91%E5%BA%93%E5%9C%A8Linux%E4%B8%8B%E5%92%8CWindows%E4%B8%8B%E6%9C%80%E4%BD%8E%E9%85%8D%E7%BD%AE%E8%A6%81%E6%B1%82/" class="archive-article-date">
-  	<time datetime="2020-02-08T17:50:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-09</time>
-</a>
-        
-    
-    
-        
-    
-    
-      </header>
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#Abstract<br>主要说明pcl点云库适合的电脑配置</p>
-        
-      
- <!-- 添加版权声明 -->
-    
-
-  <div class="declare" hidden="hidden"></div>
-
-      <!-- 添加版权声明 -->
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Point Cloud Linbrary</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Point-Cloud-Linbrary//" class="article-tag-list-link color1">Point Cloud Linbrary</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/09/Pcl%E7%82%B9%E4%BA%91%E5%BA%93%E5%9C%A8Linux%E4%B8%8B%E5%92%8CWindows%E4%B8%8B%E6%9C%80%E4%BD%8E%E9%85%8D%E7%BD%AE%E8%A6%81%E6%B1%82/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Win10下-pcl1-9-1-vs2017配置教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-            <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/08/Win10%E4%B8%8B-pcl1-9-1-vs2017%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">Win10下 pcl1.9.1 +vs2017配置教程</a>
-    </h1>
   
 
-        
-        <a href="/2020/02/08/Win10%E4%B8%8B-pcl1-9-1-vs2017%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-02-08T08:42:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-08</time>
-</a>
-        
-    
-    
-        
-    
-    
-      </header>
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#Abstract<br>介绍pcl1.9.1+VS2017下的配置和开发环境部署。</p>
-        
-      
- <!-- 添加版权声明 -->
-    
-
-  <div class="declare" hidden="hidden"></div>
-
-      <!-- 添加版权声明 -->
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Point Cloud Linbrary</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Point-Cloud-Linbrary//" class="article-tag-list-link color1">Point Cloud Linbrary</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/08/Win10%E4%B8%8B-pcl1-9-1-vs2017%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hello" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-            <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/07/Hello/">Hello World!</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/07/Hello/" class="archive-article-date">
-  	<time datetime="2020-02-07T15:46:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-07</time>
-</a>
-        
-    
-    
-        
-    
-    
-      </header>
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>This is the first time on testing blog on the PC.</p>
-
-      
- <!-- 添加版权声明 -->
-    
-
-  <div class="declare" hidden="hidden"></div>
-
-      <!-- 添加版权声明 -->
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Academic</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Diary//" class="article-tag-list-link color1">Diary</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/07/Hello/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -678,8 +415,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
