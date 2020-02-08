@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/2 | wz18207 Blog</title>
+  <title>Win10下 pcl1.9.1 +vs2017配置教程 | wz18207 Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="wz18207 Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2020/02/index.html">
+  <meta name="description" content="在文章开头，说明几个事情：    1. 虽然在国内CSDN是很好的技术社区，但是里面重复项内容很多，而且大部分的文章解释的是有失误和个人理解在里面的。因此后面我会在这里投放一些我自己使用时候一些经验。    2. 在这里呈现的代码以后只呈现核心代码，并不提供完整代码。需要完整代码的请移步pcl点云库官网：http:&#x2F;&#x2F;pointclouds.org&#x2F; 自行查询。且本内容库使用需要有一定的C++编">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Win10下 pcl1.9.1 +vs2017配置教程">
+<meta property="og:url" content="http://yoursite.com/2020/02/08/Win10%E4%B8%8B-pcl1-9-1-vs2017%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="wz18207 Blog">
+<meta property="og:description" content="在文章开头，说明几个事情：    1. 虽然在国内CSDN是很好的技术社区，但是里面重复项内容很多，而且大部分的文章解释的是有失误和个人理解在里面的。因此后面我会在这里投放一些我自己使用时候一些经验。    2. 在这里呈现的代码以后只呈现核心代码，并不提供完整代码。需要完整代码的请移步pcl点云库官网：http:&#x2F;&#x2F;pointclouds.org&#x2F; 自行查询。且本内容库使用需要有一定的C++编">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-08T08:42:59.000Z">
+<meta property="article:modified_time" content="2020-02-08T08:51:03.415Z">
 <meta property="article:author" content="wz18207">
+<meta property="article:tag" content="Academic">
+<meta property="article:tag" content="Point Cloud Linbrary">
+<meta property="article:tag" content="PCL">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="wz18207 Blog" type="application/atom+xml">
@@ -140,36 +147,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Win10下-pcl1-9-1-vs2017配置教程" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/08/Win10%E4%B8%8B-pcl1-9-1-vs2017%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-02-08T08:42:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-08</time>
-</a>
-        </div>
-    	 
+            <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/08/Win10%E4%B8%8B-pcl1-9-1-vs2017%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">Win10下 pcl1.9.1 +vs2017配置教程</a>
+    <h1 class="article-title" itemprop="name">
+      Win10下 pcl1.9.1 +vs2017配置教程
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/02/08/Win10%E4%B8%8B-pcl1-9-1-vs2017%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2020-02-08T08:42:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-08</time>
+</a>
+        
+    
+    
+        
+          <span class="archive-article-date">
+              Reading <span id="busuanzi_value_page_pv"></span>
+          </span>
+        
+    
+    
+      </header>
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 在文章开头，说明几个事情：<br>    1. 虽然在国内CSDN是很好的技术社区，但是里面重复项内容很多，而且大部分的文章解释的是有失误和个人理解在里面的。因此后面我会在这里投放一些我自己使用时候一些经验。<br>    2. 在这里呈现的代码以后只呈现核心代码，并不提供完整代码。需要完整代码的请移步pcl点云库官网：<a href="http://pointclouds.org/" target="_blank" rel="noopener">http://pointclouds.org/</a> 自行查询。且本内容库使用需要有一定的C++编程基础（这里不提python！）<br>  3. 之前有说想在linux上面做安装使用教程，但我一直在用VS2017写C++，转换操作系统后需要解决CMakelists.txt的相关报错问题。因此现下写Windows下的pcl 和 vs2017 使用教程。<br>    废话不多说，直接开始吧。</p>
+
+      
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -189,7 +209,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -206,66 +226,104 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/08/Win10%E4%B8%8B-pcl1-9-1-vs2017%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/07/Hello/" class="archive-article-date">
-  	<time datetime="2020-02-07T15:46:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-07</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/07/Hello/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World!</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/07/Hello/">Hello World!</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Academic</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Diary//" class="article-tag-list-link color1">Diary</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -300,8 +358,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
