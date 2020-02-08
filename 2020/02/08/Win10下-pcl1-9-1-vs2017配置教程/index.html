@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/08/Win10%E4%B8%8B-pcl1-9-1-vs2017%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/7.webp">
 <meta property="og:image" content="http://yoursite.com/2020/02/08/Win10%E4%B8%8B-pcl1-9-1-vs2017%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/8.webp">
 <meta property="article:published_time" content="2020-02-08T08:42:59.000Z">
-<meta property="article:modified_time" content="2020-02-08T10:46:59.497Z">
+<meta property="article:modified_time" content="2020-02-08T10:51:03.138Z">
 <meta property="article:author" content="wz18207">
 <meta property="article:tag" content="Point Cloud Linbrary">
 <meta name="twitter:card" content="summary">
@@ -219,7 +219,7 @@
 <li><p>tips：如果你很懒的话，可以试一下这个方法：<br>在每一个库目录底下新建一个test.txt，以Debug为例：dir /b *debug.lib&gt;1.txt），然后将test.txt改成test.bat，运行脚本即可在1.txt中找到所有的lib。如果是Release，只需将上述例子中的debug改为release即可。</p>
 </li>
 </ol>
-<p>#验证安装是否成功<br>最后就是验证程序，点云数据请自行查找。没有的话在pcl安装目录下搜索*.pcd，找到rs1.pcd（随便一个pcd点云数据都行），将路径添加到如下代码即可：<br>#include&lt;pcl/visualization/cloud_viewer.h&gt;<br>#include<iostream><br>#include&lt;pcl/io/io.h&gt;<br>#include&lt;pcl/io/pcd_io.h&gt;<br>#include&lt;pcl/io/PLY_io.h&gt;<br>#include&lt;pcl/point_types.h&gt; </iostream></p>
+<p>#验证安装是否成功<br>最后就是验证程序，点云数据请自行查找。没有的话在pcl安装目录下搜索*.pcd，找到rs1.pcd（随便一个pcd点云数据都行），将路径添加到如下代码即可：<br>‘’’<br>#include&lt;pcl/visualization/cloud_viewer.h&gt;<br>#include<iostream><br>#include&lt;pcl/io/io.h&gt;<br>#include&lt;pcl/io/pcd_io.h&gt;<br>#include&lt;pcl/io/PLY_io.h&gt;<br>#include&lt;pcl/point_types.h&gt; </iostream></p>
 <p>int user_data;<br>using std::cout;</p>
 <p>void viewerOneOff(pcl::visualization::PCLVisualizer&amp; viewer)<br>{<br>        viewer.setBackgroundColor(0.0, 0.0, 0.0);<br>}<br>int main(void)<br>{<br>        pcl::PointCloud<a href="pcl::PointXYZ">pcl::PointXYZ</a>::Ptr cloud(new pcl::PointCloud<a href="pcl::PointXYZ">pcl::PointXYZ</a>);<br>        char strfilepath[256] = “你的点云路径”;</p>
 <pre><code>if (-1 == pcl::io::loadPCDFile(strfilepath, *cloud))
@@ -232,7 +232,7 @@ pcl::visualization::CloudViewer viewer(&quot;Cloud Viewer&quot;);
 viewer.showCloud(cloud);
 viewer.runOnVisualizationThreadOnce(viewerOneOff);
 system(&quot;pause&quot;);
-return 0;</code></pre><p>}<br>至此，win10下的pcl1.9.1+vs2017全部安装完成了，可以放心地开始使用点云库了，nice!</p>
+return 0;</code></pre><p>}<br>‘’’<br>至此，win10下的pcl1.9.1+vs2017全部安装完成了，可以放心地开始使用点云库了，nice!</p>
 
       
  <!-- 添加版权声明 -->
