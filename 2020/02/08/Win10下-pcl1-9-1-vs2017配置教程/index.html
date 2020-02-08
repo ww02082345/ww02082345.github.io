@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/08/Win10%E4%B8%8B-pcl1-9-1-vs2017%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/7.webp">
 <meta property="og:image" content="http://yoursite.com/2020/02/08/Win10%E4%B8%8B-pcl1-9-1-vs2017%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/8.webp">
 <meta property="article:published_time" content="2020-02-08T08:42:59.000Z">
-<meta property="article:modified_time" content="2020-02-08T11:41:57.434Z">
+<meta property="article:modified_time" content="2020-02-08T11:51:11.879Z">
 <meta property="article:author" content="wz18207">
 <meta property="article:tag" content="Point Cloud Linbrary">
 <meta name="twitter:card" content="summary">
@@ -209,20 +209,20 @@
 <p>#Windows下VS2017环境配置<br>由于现在的pcl点云库仍然在使用C++ 11的标准，最新的vs2019对pcl点云库不适用，如果强行安装会有非常多的报错。</p>
 <p>vs2017请自行安装，这里只讲安装完成的。这里填写的路径都请自行修改成你自己的路径。<br>打开vs2017，新建空项目（一定是空项目），建立完后在源文件下新建main.cpp；解决方案平台调整至x64。</p>
 <p>打开项目属性，在配置属性 &gt; VC++目录 &gt; 常规 &gt; 包含目录下填写如下路径：</p>
-<p>​<code>C:\PCL 1.9.1\include\pcl-1.9
-C:\PCL 1.9.1\3rdParty\OpenNI2\Include
-C:\PCL 1.9.1\3rdParty\Boost\include\boost-1_68
-C:\PCL 1.9.1\3rdParty\Eigen\eigen3
-C:\PCL 1.9.1\3rdParty\FLANN\include
-C:\PCL 1.9.1\3rdParty\Qhull\include
-C:\PCL 1.9.1\3rdParty\VTK\include\vtk-8.1
+<p>​<code>C:\PCL 1.9.1\include\pcl-1.9;
+C:\PCL 1.9.1\3rdParty\OpenNI2\Include;
+C:\PCL 1.9.1\3rdParty\Boost\include\boost-1_68;
+C:\PCL 1.9.1\3rdParty\Eigen\eigen3;
+C:\PCL 1.9.1\3rdParty\FLANN\include;
+C:\PCL 1.9.1\3rdParty\Qhull\include;
+C:\PCL 1.9.1\3rdParty\VTK\include\vtk-8.1;
 ​</code><br>在VC++目录 &gt; 常规 &gt; 库目录下填写如下路径：</p>
-<p>​<code>C:\PCL 1.9.1\lib
-C:\PCL 1.9.1\3rdParty\Boost\lib
-C:\PCL 1.9.1\3rdParty\FLANN\lib
-C:\PCL 1.9.1\3rdParty\OpenNI2\Lib
-C:\PCL 1.9.1\3rdParty\Qhull\lib
-C:\PCL 1.9.1\3rdParty\VTK\lib
+<p>​<code>C:\PCL 1.9.1\lib;
+C:\PCL 1.9.1\3rdParty\Boost\lib;
+C:\PCL 1.9.1\3rdParty\FLANN\lib;
+C:\PCL 1.9.1\3rdParty\OpenNI2\Lib;
+C:\PCL 1.9.1\3rdParty\Qhull\lib;
+C:\PCL 1.9.1\3rdParty\VTK\lib;
 ​</code></p>
 <p>在配置属性 &gt; C/C++ &gt; 常规 &gt; SDL检查选择为“否（/sdl-）”，在配置属性 &gt; C/C++ &gt; 预处理器 &gt; 预处理器定义中添加如下内容：</p>
 <p>​<code>_CRT_SECURE_NO_WARNINGS;
@@ -518,11 +518,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Academic</a>
+                <a href="javascript:void(0)" class="js-tag color1">Point Cloud Linbrary</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Point Cloud Linbrary</a>
+                <a href="javascript:void(0)" class="js-tag color4">Academic</a>
               </li>
             
             <div class="clearfix"></div>
