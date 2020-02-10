@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/11/Opencv%E7%9A%84bug%E5%92%8C%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/8.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/11/Opencv%E7%9A%84bug%E5%92%8C%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/9.png">
 <meta property="article:published_time" content="2020-02-10T16:38:25.000Z">
-<meta property="article:modified_time" content="2020-02-10T17:41:32.249Z">
+<meta property="article:modified_time" content="2020-02-10T17:45:00.666Z">
 <meta property="article:author" content="wz18207">
 <meta property="article:tag" content="Opencv">
 <meta property="article:tag" content="Bug">
@@ -205,7 +205,10 @@
 但是在Opencv的Scalar中，记录的方式为B,G,R,Alpha。因此我将它的代码做了如下的修改：<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cv::Mat blend_b = alpha * src + beta * cv::Scalar( <span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span> );</span><br><span class="line">cv::Mat blend_g = alpha * src + beta * cv::Scalar( <span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>, <span class="number">255</span> );</span><br><span class="line">cv::Mat blend_r = alpha * src + beta * cv::Scalar( <span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span> );</span><br></pre></td></tr></table></figure>
 这样就可以正常显示了。<br>然后他这样回复我：<br><img src="/2020/02/11/Opencv%E7%9A%84bug%E5%92%8C%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/3.png" alt><br>如果这样写的话，在测试中只有蓝色会出现这种状况，但是其他的颜色不会。<br>我先和他解释了R,G,B,Alpha四元数组成二维图像的基本要素,且根据规则，Scalar函数应当被填写为4个数值。<br>后面他这样回复我：<br><img src="/2020/02/11/Opencv%E7%9A%84bug%E5%92%8C%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/4.png" alt><br>我有点懵了，他为啥要这样说啊。我想是不是因为没有正确使用函数导致元素没有从内存中释放。于是我尝试从这方面入手：（第一次尝试对程序调试，所以技术会很菜。）</li>
 </ol>
-<p>在此处设置断点，进行内存调试：<br><img src="/2020/02/11/Opencv%E7%9A%84bug%E5%92%8C%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/5.png" alt><br><img src="/2020/02/11/Opencv%E7%9A%84bug%E5%92%8C%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/6.png" alt><br><img src="/2020/02/11/Opencv%E7%9A%84bug%E5%92%8C%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/7.png" alt><br><img src="/2020/02/11/Opencv%E7%9A%84bug%E5%92%8C%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/8.png" alt><br>但是进行了内存的调试后，发现图像程序确实被完整的读取了，因此不存在内存的初始化导致内存读取错误的问题。</p>
+<p>在此处设置断点，进行内存调试：<br><img src="/2020/02/11/Opencv%E7%9A%84bug%E5%92%8C%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/5.png" alt></p>
+<p><img src="/2020/02/11/Opencv%E7%9A%84bug%E5%92%8C%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/6.png" alt></p>
+<p><img src="/2020/02/11/Opencv%E7%9A%84bug%E5%92%8C%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/7.png" alt></p>
+<p><img src="/2020/02/11/Opencv%E7%9A%84bug%E5%92%8C%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/8.png" alt><br>但是进行了内存的调试后，发现图像程序确实被完整的读取了，因此不存在内存的初始化导致内存读取错误的问题。</p>
 <p>后来，在问题下面看到有大佬写了这个错误：<br><img src="/2020/02/11/Opencv%E7%9A%84bug%E5%92%8C%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/9.png" alt><br>说此处优化分支对这里无效，但是这并不解决问题，只是说了事情的表象没有说到最本质的问题。<br>不应当是被认为是没有对该函数进行优化，这样的逻辑是没有办法说明的。<br>因此我在这里认为：有必要对于Mat函数是否影响Scalar函数进行很深一层次的分析。<br>（未完待续。。。）</p>
 
       
@@ -484,19 +487,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Academic</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Point Cloud Linbrary</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Academic</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,6 +504,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Diary</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
               </li>
             
             <div class="clearfix"></div>
