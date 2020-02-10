@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/11/Opencv%E7%9A%84bug%E5%92%8C%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/8.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/11/Opencv%E7%9A%84bug%E5%92%8C%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/9.png">
 <meta property="article:published_time" content="2020-02-10T16:38:25.000Z">
-<meta property="article:modified_time" content="2020-02-10T17:45:00.666Z">
+<meta property="article:modified_time" content="2020-02-10T18:00:18.702Z">
 <meta property="article:author" content="wz18207">
 <meta property="article:tag" content="Opencv">
 <meta property="article:tag" content="Bug">
@@ -199,7 +199,7 @@
 <p><img src="/2020/02/11/Opencv%E7%9A%84bug%E5%92%8C%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/2.png" alt><br>从字面意思上来看，就是蓝色部分没有正常输出。因为之前跟他由电子邮件之间的来往，对他很熟悉，恰好我对Opencv这一块儿最近在用，有比较熟悉。想帮一帮他。</p>
 <p>从代码上看，这段代码两个基础的错误：</p>
 <ol>
-<li>没有像内存申请cv的空间；<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="title">cv</span>;</span><br></pre></td></tr></table></figure></li>
+<li>没有向内存申请cv的空间；<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="title">cv</span>;</span><br></pre></td></tr></table></figure></li>
 <li>函数scalar使用错误。<br>对于opencv中的函数scalar,定义如下：<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct <span class="keyword">Scalar</span></span><br><span class="line">&#123;</span><br><span class="line">double <span class="comment">val[4]</span>;</span><br><span class="line">&#125;<span class="keyword">Scalar</span>;</span><br></pre></td></tr></table></figure>
 由此可知scalar是一个四元图像函数，用来对应二维图像中的R,G,B,Alpha四个值。<br>其中，R,G,B分别为红，绿，蓝三原色，对应图像中每一个像素块儿的分配比例。<br>但是对于Alpha值，为图像的灰度值，字面意思上理解就是呈现图像清晰模糊的程度大小。<br>一般的，在实际情况下，图像中每一个像素块儿的色彩计算应当按照如下的方式进行：<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(R<span class="number">*A</span>lpha,G<span class="number">*A</span>lpha,B<span class="number">*A</span>plha)</span><br></pre></td></tr></table></figure>
 但是在Opencv的Scalar中，记录的方式为B,G,R,Alpha。因此我将它的代码做了如下的修改：<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cv::Mat blend_b = alpha * src + beta * cv::Scalar( <span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span> );</span><br><span class="line">cv::Mat blend_g = alpha * src + beta * cv::Scalar( <span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>, <span class="number">255</span> );</span><br><span class="line">cv::Mat blend_r = alpha * src + beta * cv::Scalar( <span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span> );</span><br></pre></td></tr></table></figure>
@@ -487,11 +487,19 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Academic</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Point Cloud Linbrary</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Academic</a>
+                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,14 +512,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Diary</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
               </li>
             
             <div class="clearfix"></div>
