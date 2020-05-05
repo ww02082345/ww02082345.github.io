@@ -26,10 +26,10 @@
 <meta property="og:image" content="https://wz18207.github.io/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/6.webp">
 <meta property="og:image" content="https://wz18207.github.io/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/7.webp">
 <meta property="article:published_time" content="2020-02-08T18:07:04.000Z">
-<meta property="article:modified_time" content="2020-02-26T14:13:48.363Z">
+<meta property="article:modified_time" content="2020-05-05T08:21:11.491Z">
 <meta property="article:author" content="wz18207">
-<meta property="article:tag" content="Algorithm">
 <meta property="article:tag" content="SHADE">
+<meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://wz18207.github.io/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/1.webp">
   
@@ -228,7 +228,7 @@
 <p>接下来进入current-to-best/1的Variation策略，值得注意的是，Xr1,G是从第G代个体中随机选取的个体，而Xr2,G是从第G代所有个体和存档集合A中随机选取的个体。<br>然后进入Cross和Select操作。<br>在Select操作中，保留适应度函数值较小的个体以构成下一代种群，以控制种群数量。<br>如果保留数值发生改变，则Xi,G、CRi,G、Fi,G分别添加至集合A，SCR和SF中。<br>若当A的势|A|&gt;Pmax时，随机删除A中若干个体以保证|A|&lt;Pmax。若SCR不为空集时，则将MCR，MF更新为：</p>
 <p><img src="/2020/02/09/%E4%BB%8B%E7%BB%8DSHADE%E7%AE%97%E6%B3%95/7.webp" alt></p>
 <p>下一步，则令迭代数G增加1，若G&lt;Gmax成立，则令索引计数器h增加1，此使要满足h&gt;H则令h为1，返回至Variation步骤重复进行。若G&gt;=Gmax成立，则终止迭代。<br>由于接触时间不长，这些都是根据自己的理解所写下来的，而且我作为初学者理解尚不深刻，所以可能存在一些不足之处，若有疑问可在评论区进行合理讨论。<br>上述文章和代码仅供学习使用，且我选用的图片资源都是在官网上公开发表的论文里面可以找到的。</p>
-<p>我的代码：<br><a href="https://github.com/ww02082345/ww020823/tree/master/Algorithm/SHADE_CEC2013" target="_blank" rel="noopener">https://github.com/ww02082345/ww020823/tree/master/Algorithm/SHADE_CEC2013</a></p>
+<p>我的代码：<br><a href="https://github.com/wz18207/ww020823/tree/master/Algorithm/SHADE_CEC2013" target="_blank" rel="noopener">https://github.com/wz18207/ww020823/tree/master/Algorithm/SHADE_CEC2013</a></p>
 
       
  <!-- 添加版权声明 -->
@@ -264,11 +264,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SHADE</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SHADE</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
         		</li>
       		
 		</ul>
@@ -515,11 +515,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Academic</a>
+                <a href="javascript:void(0)" class="js-tag color1">Point Cloud Linbrary</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Point Cloud Linbrary</a>
+                <a href="javascript:void(0)" class="js-tag color4">Academic</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -531,15 +531,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SHADE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Diary</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SHADE</a>
               </li>
             
             <div class="clearfix"></div>
