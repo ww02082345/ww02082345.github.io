@@ -356,22 +356,26 @@
 
   
 
-  
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
-<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "https://wz18207.github.io/2020/07/27/SDVX%20Simulators/",
-  owner: 'wz18207',
-  repo: 'https://wz18207.github.io/',
-  oauth: {
-    client_id: '1fe233b121d29476e0aa',
-    client_secret: 'f329b715a2be8a992513a432c2ebe35529a009c9',
-  },
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: '1fe233b121d29476e0aa',
+  	clientSecret: 'f329b715a2be8a992513a432c2ebe35529a009c9',
+  	repo: 'wz18207.github.io',
+  	owner: 'wz18207',
+  	admin: ['admin'],
+  	id: 'Mon Jul 27 2020 21:19:42 GMT+0800',
+  	distractionFreeMode: 'true'
 })
-gitment.render('gitment-ctn')
+gitalk.render('gitalk-container') 
+}
 </script>
+
+
+  
   
 
 
