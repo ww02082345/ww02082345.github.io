@@ -18,12 +18,17 @@
 <meta property="og:site_name" content="wz18207 Blog">
 <meta property="og:description" content="#Abstract讲述有关point cloud library 的部分api以及pcl从三维sensor中提取三维点云的原理。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wz18207.github.io/2021/01/30/Pcl%E4%B8%8Ekinectv2%E4%B9%8B%E9%97%B4%E7%9A%84api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E5%92%8C%E8%8E%B7%E5%8F%96%E7%82%B9%E4%BA%91%E5%8E%9F%E7%90%86/1.png">
+<meta property="og:image" content="https://wz18207.github.io/2021/01/30/Pcl%E4%B8%8Ekinectv2%E4%B9%8B%E9%97%B4%E7%9A%84api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E5%92%8C%E8%8E%B7%E5%8F%96%E7%82%B9%E4%BA%91%E5%8E%9F%E7%90%86/2.png">
+<meta property="og:image" content="https://wz18207.github.io/2021/01/30/Pcl%E4%B8%8Ekinectv2%E4%B9%8B%E9%97%B4%E7%9A%84api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E5%92%8C%E8%8E%B7%E5%8F%96%E7%82%B9%E4%BA%91%E5%8E%9F%E7%90%86/3.png">
+<meta property="og:image" content="https://wz18207.github.io/2021/01/30/Pcl%E4%B8%8Ekinectv2%E4%B9%8B%E9%97%B4%E7%9A%84api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E5%92%8C%E8%8E%B7%E5%8F%96%E7%82%B9%E4%BA%91%E5%8E%9F%E7%90%86/4.png">
 <meta property="article:published_time" content="2021-01-30T07:38:36.000Z">
-<meta property="article:modified_time" content="2021-01-30T18:49:48.029Z">
+<meta property="article:modified_time" content="2021-01-31T08:46:05.226Z">
 <meta property="article:author" content="wz18207">
 <meta property="article:tag" content="Point Cloud Linbrary">
 <meta property="article:tag" content="Sensor">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wz18207.github.io/2021/01/30/Pcl%E4%B8%8Ekinectv2%E4%B9%8B%E9%97%B4%E7%9A%84api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E5%92%8C%E8%8E%B7%E5%8F%96%E7%82%B9%E4%BA%91%E5%8E%9F%E7%90%86/1.png">
   
     <link rel="alternative" href="/atom.xml" title="wz18207 Blog" type="application/atom+xml">
   
@@ -201,13 +206,13 @@
 <p>关于pcl获取三维sensor中的点云，原理主要分为如下的几个步骤：</p>
 <p>以kinect v2为例，<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/7251485/#full-text-section">参考文献</a></p>
 <p>如下图所示，kinect v2的具体参数</p>
-<p>![](Pcl与kinect v2之间的api接口说明和获取点云原理/1.png)</p>
+<p><img src="/2021/01/30/Pcl%E4%B8%8Ekinectv2%E4%B9%8B%E9%97%B4%E7%9A%84api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E5%92%8C%E8%8E%B7%E5%8F%96%E7%82%B9%E4%BA%91%E5%8E%9F%E7%90%86/1.png"></p>
 <p>其中Kinect v2 的rgb视场（FOV）是84.1 x 53.8。</p>
 <p>关于<a target="_blank" rel="noopener" href="http://www.smeenk.com/webgl/kinectfovexplorer.html">FOV的建模和模型</a></p>
 <p>下图为Kinect v2的详细结构参数图，kinect v2由rgb相机，红外深度相机和激光扫描仪组成。</p>
-<p>![](Pcl与kinect v2之间的api接口说明和获取点云原理/2.png)</p>
-<p>![](Pcl与kinect v2之间的api接口说明和获取点云原理/3.png)</p>
-<p>![](Pcl与kinect v2之间的api接口说明和获取点云原理/4.png)</p>
+<p><img src="/2021/01/30/Pcl%E4%B8%8Ekinectv2%E4%B9%8B%E9%97%B4%E7%9A%84api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E5%92%8C%E8%8E%B7%E5%8F%96%E7%82%B9%E4%BA%91%E5%8E%9F%E7%90%86/2.png"></p>
+<p><img src="/2021/01/30/Pcl%E4%B8%8Ekinectv2%E4%B9%8B%E9%97%B4%E7%9A%84api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E5%92%8C%E8%8E%B7%E5%8F%96%E7%82%B9%E4%BA%91%E5%8E%9F%E7%90%86/3.png"></p>
+<p><img src="/2021/01/30/Pcl%E4%B8%8Ekinectv2%E4%B9%8B%E9%97%B4%E7%9A%84api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E5%92%8C%E8%8E%B7%E5%8F%96%E7%82%B9%E4%BA%91%E5%8E%9F%E7%90%86/4.png"></p>
 <p>其中<strong>一定要搞明白相机坐标的方向和初始坐标轴！！</strong>这关系到采集后的xyz坐标系下的三维点云坐标的一些列坐标转化问题。一开始就要搞明白。</p>
 <p>对于通用的三维sensor来说，采集三维点云需要几个通用的过程。</p>
 <p>info—探针—buffer—mem—图像显示—save</p>
