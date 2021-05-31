@@ -49,6 +49,11 @@
                         patches: [{offset: 0x8ACF3, off: [0x75], on: [0xEB]}]
                     },
                     {
+                        name: "Force Cabinet Type 6",
+                        tooltip: "This will cause the game to load a different theme, some assets (such as menu background) may not work with this forced code.",
+                        patches: [{offset: 0xE118, off: [0xFF, 0x24], on: [0xEB, 0x71]}]
+                    },
+                    {
                         name: "Enable DDR SELECTION",
                         tooltip: "Even works in offline/local mode!",
                         patches: [{offset: 0x85314, off: [0xE8, 0xA7, 0xAA, 0x01], on: [0xB8, 0x01, 0x00, 0x00]}]
